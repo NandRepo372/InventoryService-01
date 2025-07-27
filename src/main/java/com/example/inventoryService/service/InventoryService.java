@@ -45,4 +45,16 @@ public class InventoryService {
                 .build();
 
     }
+
+    public EventInventoryResponse getEventById(Long eventId ) {
+        final Event event = eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException("Event not found"));
+
+        return EventInventoryResponse.builder()
+                .eventId(event.getId())
+                .event(event.getName())
+                .capacity(event.getLeft_capacity())
+                .venue(event.getVenue())
+                .ticketPrice(event.getTicket_price())
+                .build();
+    }
 }
