@@ -35,4 +35,9 @@ public class InventoryController {
     public @ResponseBody VenueInventoryResponse inventoryGetVenueById(@PathVariable("venueId") Long venueId) {
         return inventoryService.getVenueInformation(venueId);
     }
+
+    @PutMapping("/inventory/event/{eventId}/capacity/{capacity}")
+    public @ResponseBody EventInventoryResponse updateEventCapacity(@PathVariable("eventId") Long eventId, @PathVariable("capacity") Long capacity) {
+        return inventoryService.updateEventCapacity(eventId, capacity);
+    }
 }

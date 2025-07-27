@@ -57,4 +57,24 @@ public class InventoryService {
                 .ticketPrice(event.getTicket_price())
                 .build();
     }
+
+    public EventInventoryResponse updateEventCapacity(Long eventId, Long capacity) {
+        final Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new RuntimeException("Event not found"));
+
+        if (capacity < 0 || capacity > event.getTotoal_capacity()) {
+            throw new IllegalArgumentException("Invalid capacity value");
+        }
+
+        event.setLeft_capacity(event.getLeft_capacity() - capacity);
+        eventRepository.saveAndFlush(event);
+
+        return EventInventoryResponse.builder()
+                .eventId(event.getId())
+                .event(event.getName())
+                .capacity(event.getLeft_capacity())
+                .venue(event.getVenue())
+                .ticketPrice(event.getTicket_price())
+                .build();
+    }
 }
