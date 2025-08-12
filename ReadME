@@ -1,0 +1,55 @@
+Inventory Service
+
+Project Description:
+The InventoryService is a Spring Boot-based microservice designed to manage inventory data. It provides RESTful APIs for CRUD operations on inventory items and integrates with a database for persistent storage. The service is built to be modular, scalable, and easy to maintain.
+
+Technology Stack:
+-Programming Language: Java
+-Framework: Spring Boot
+-Build Tool: Maven
+-Database: SQL (e.g., MySQL, PostgreSQL, or H2 for development/testing)
+-ORM: Hibernate (via Spring Data JPA)
+-IDE: IntelliJ IDEA 2022.2.5
+-Dependency Management: Maven
+-Testing: JUnit, Mockito
+-Version Control: GitHub
+
+Features:
+-CRUD operations for inventory items.
+-Integration with a relational database using Spring Data JPA.
+-RESTful API endpoints for external communication.
+-Exception handling and validation for robust API responses.
+-Unit and integration tests for code reliability.
+
+Prerequisites:
+-Java 17 or higher
+-Maven 3.8 or higher
+-A relational database (e.g., MySQL, PostgreSQL)
+-IntelliJ IDEA (optional but recommended)
+
+Setup Instructions
+
+1.Clone the repository:
+    git clone https://github.com/NandRepo372/inventoryService.git
+    cd inventoryService
+2.Configure the database:
+    Update the database connection properties in src/main/resources/application.properties:
+    spring.datasource.url=jdbc:mysql://localhost:3306/inventory_db
+    spring.datasource.username=your_username
+    spring.datasource.password=your_password
+    spring.jpa.hibernate.ddl-auto=update
+3.Build the project:
+    mvn clean install
+4.Run the application:
+    mvn spring-boot:run
+5.Access the API:
+    Base URL: http://localhost:8080/api/v1/inventory
+
+API Endpoints
+| HTTP Method | Endpoint          | Description                     |
+GET  /items/ Fetch  all inventory items
+GET  /items/{id}    Fetch a specific item by ID
+POST /items         Add a new inventory item
+PUT  /items/{id}    Update an existing item
+DELETE /items/{id}   Delete an item by ID
+
